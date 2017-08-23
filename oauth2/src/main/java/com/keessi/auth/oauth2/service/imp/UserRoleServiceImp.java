@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserRoleServiceImp implements UserRoleService{
+public class UserRoleServiceImp implements UserRoleService {
     private final UserRoleRep userRoleRep;
 
     @Autowired

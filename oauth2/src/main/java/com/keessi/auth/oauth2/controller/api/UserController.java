@@ -21,7 +21,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> listAllUser() {
-        List<User> users=userService.findAll();
+        List<User> users = userService.findAll();
         if (users.isEmpty()) {
             return null;
         }

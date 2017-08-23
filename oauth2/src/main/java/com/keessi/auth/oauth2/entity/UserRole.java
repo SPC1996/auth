@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user_role")
-public class UserRole implements Serializable{
+public class UserRole implements Serializable {
     @Column(name = "id")
     private int id;
     @Column(name = "uid")

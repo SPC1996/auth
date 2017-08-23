@@ -18,11 +18,11 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user=userService.findByUsername(username);
-        if (user==null) {
-            throw new UsernameNotFoundException("用户名："+username+"不存在");
+        User user = userService.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户名：" + username + "不存在");
         }
-        Collection<SimpleGrantedAuthority> collection=new HashSet<>();
+        Collection<SimpleGrantedAuthority> collection = new HashSet<>();
         for (Role role : user.getList()) {
             collection.add(new SimpleGrantedAuthority(role.getRoleName()));
         }

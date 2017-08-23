@@ -7,14 +7,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable{
+public class User implements Serializable {
     @Column(name = "id")
     private int id;
     @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;
-    private List<Role> list=new ArrayList<>();
+    private List<Role> list = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
