@@ -27,6 +27,7 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 public class Application {
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final DataSource dataSource;
 
     @Autowired
@@ -98,32 +99,32 @@ public class Application {
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients.jdbc(dataSource)
-                    .passwordEncoder(passwordEncoder);
+                    .passwordEncoder(passwordEncoder)
             //初始化时使用下列注释代码，数据库中存在数据时需要注释下列代码
-//                    .withClient("my_trusted_client")
-//                    .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
-//                    .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
-//                    .scopes("read", "write", "trust")
-//                    .accessTokenValiditySeconds(600)
-//                    .refreshTokenValiditySeconds(6000)
-//                    .and()
-//                    .withClient("my_client_with_registered_redirect")
-//                    .authorizedGrantTypes("authorization_code")
-//                    .authorities("ROLE_CLIENT")
-//                    .scopes("read", "trust")
-//                    .redirectUris("http://www.baidu.com")
-//                    .accessTokenValiditySeconds(600)
-//                    .refreshTokenValiditySeconds(6000)
-//                    .resourceIds("oauth2-resource")
-//                    .and()
-//                    .withClient("my_client_with_secret")
-//                    .authorizedGrantTypes("client_credentials", "password")
-//                    .authorities("ROLE_CLIENT")
-//                    .scopes("read")
-//                    .accessTokenValiditySeconds(600)
-//                    .refreshTokenValiditySeconds(6000)
-//                    .resourceIds("oauth2-resource")
-//                    .secret("secret");
+                    .withClient("my_trusted_client")
+                    .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+                    .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+                    .scopes("read", "write", "trust")
+                    .accessTokenValiditySeconds(600)
+                    .refreshTokenValiditySeconds(6000)
+                    .and()
+                    .withClient("my_client_with_registered_redirect")
+                    .authorizedGrantTypes("authorization_code")
+                    .authorities("ROLE_CLIENT")
+                    .scopes("read", "trust")
+                    .redirectUris("http://www.baidu.com")
+                    .accessTokenValiditySeconds(600)
+                    .refreshTokenValiditySeconds(6000)
+                    .resourceIds("oauth2-resource")
+                    .and()
+                    .withClient("my_client_with_secret")
+                    .authorizedGrantTypes("client_credentials", "password")
+                    .authorities("ROLE_CLIENT")
+                    .scopes("read")
+                    .accessTokenValiditySeconds(600)
+                    .refreshTokenValiditySeconds(6000)
+                    .resourceIds("oauth2-resource")
+                    .secret("secret");
         }
     }
 
@@ -131,8 +132,9 @@ public class Application {
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder)
                 .withUser("spc")
-                .password("199602")
+                .password(passwordEncoder.encode("199602"))
                 .roles("USER", "ACTUATOR");
     }
 
