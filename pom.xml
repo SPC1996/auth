@@ -22,6 +22,7 @@
     <modules>
         <module>oauth2</module>
         <module>jdbc</module>
+        <module>shiro</module>
     </modules>
 
     <dependencies>
