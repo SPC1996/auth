@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>shiro-quickstart</module>
-        <module>shiroquickstartguice</module>
+        <module>shiro-quickstart-guice</module>
     </modules>
 
     <dependencies>
