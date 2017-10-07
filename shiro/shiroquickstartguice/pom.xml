@@ -3,35 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>auth</artifactId>
+        <artifactId>shiro</artifactId>
         <groupId>com.keessi</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shiro</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>shiro-quickstart</module>
-        <module>shiroquickstartguice</module>
-    </modules>
+    <artifactId>shiro-quickstart-guice</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
+            <artifactId>shiro-guice</artifactId>
             <version>1.3.2</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.25</version>
-            <scope>test</scope>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>3.0</version>
         </dependency>
     </dependencies>
+
+
 </project>
